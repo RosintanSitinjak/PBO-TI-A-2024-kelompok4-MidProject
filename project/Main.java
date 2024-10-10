@@ -8,7 +8,7 @@ public class Main {
 
         pilihanMenu();
         System.out.println("Masukkan pilihan Anda: ");
-        int pilihan = input.nextInt();
+        int choice = input.nextInt();
 
 
     }
