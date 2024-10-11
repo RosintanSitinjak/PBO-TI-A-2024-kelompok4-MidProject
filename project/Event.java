@@ -36,22 +36,22 @@ public class Event {
         int choose;
 
         do {
-//            choose = showMenu(scanner);
+            choose = showMenu(scanner);
 
             switch (choose) {
                 case 1:
-//                    inputEvent(scanner, eventList);
+                    inputEvent(scanner, eventList);
                     break;
 
                 case 2:
-//                    editEvent(scanner, eventList);
+                    editEvent(scanner, eventList);
                     break;
 
                 case 3:
 //                    removeEvent(scanner, eventList);
                     break;
 
-                case 4
+                case 4:
                     ;
 //                    ShowEvent(eventList);
                     break;
@@ -75,11 +75,63 @@ public class Event {
         System.out.println("1. Tambah Event");
         System.out.println("2. Ubah/Edit Event");
         System.out.println("3. Hapus Event");
-        System.out.println("Lihat Event");
+        System.out.println("4. Lihat Event");
         System.out.println("0. Kembali ke Menu Awal");
         System.out.print("Pilihlah Menu: ");
             return scanner.nextInt();
     }
+
+    //method untuk tambah event
+    public static void inputEvent(Scanner scanner, ArrayList<Event> eventList){
+        scanner.nextLine();
+
+        System.out.println("Masukkan nama Event: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Masukkan tanggal event: ");
+        String date = scanner.nextLine();
+
+        System.out.println("Masukkan tempat/lokasi event: ");
+        String location = scanner.nextLine();
+
+        //tambah event baru
+        eventList.add(new Event(name, date, location));
+        System.out.println("Event telah berhasil ditambahkan");
+    }
+
+    //method untuk mengedit
+    public static void editEvent(Scanner scanner, ArrayList<Event> eventList){
+        if (eventList.isEmpty()){
+            System.out.println("Tidak ada event yang terdaftar/ditambahkan");
+        } else {
+            System.out.println("Daftar Event yang Sudah di Tambahkan: ");
+            for (int i = 0; i < eventList.size(); i++) {
+                System.out.println((i + 1) + ". " + eventList.get(i).getNameEvent());
+            }
+
+            System.out.println("Pilihlah nomor event yang ingin di edit: ");
+            int editEvent = scanner.nextInt() - 1;
+            scanner.nextLine();
+
+            if (editEvent >= 0 && editEvent < eventList.size()) {
+                System.out.println("Masukkan nama event yang baru: ");
+                String newName = scanner.nextLine();
+
+                System.out.println("Masukkan tanggal event yang baru: ");
+                String newDate = scanner.nextLine();
+
+                System.out.println("Masukkan lokasi event yang baru: ");
+                String newLocation = scanner.nextLine();
+
+                eventList.set(editEvent, new Event(newName, newDate, newLocation));
+                System.out.println("Event telah berhasil diedit");
+            } else {
+                System.out.println("pilhan anda tidak valid, silahkan coba kembali");
+            }
+        }
+
+    }
+
 }
 
 
