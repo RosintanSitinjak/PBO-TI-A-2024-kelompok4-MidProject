@@ -12,11 +12,11 @@ public class Main {
 
         switch(choice){
             case 1:
-                System.out.println("proses");;
+                System.out.println("proses");
             break;
 
             case 2:
-                System.out.println("proses");;
+                System.out.println("proses");
             break;
 
             default:
