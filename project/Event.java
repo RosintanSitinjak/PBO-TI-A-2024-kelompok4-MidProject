@@ -51,7 +51,8 @@ public class Event {
 //                    removeEvent(scanner, eventList);
                     break;
 
-                case 4 ;
+                case 4
+                    ;
 //                    ShowEvent(eventList);
                     break;
 
@@ -64,6 +65,22 @@ public class Event {
                     break;
             }
         } while (choose != 0);
+
+        scanner.close();
+    }
+
+    //method untuk tampilan menu
+    public static int showMenu(Scanner scanner){
+        System.out.println("Manajemen Event");
+        System.out.println("1. Tambah Event");
+        System.out.println("2. Ubah/Edit Event");
+        System.out.println("3. Hapus Event");
+        System.out.println("Lihat Event");
+        System.out.println("0. Kembali ke Menu Awal");
+        System.out.print("Pilihlah Menu: ");
+            return scanner.nextInt();
+    }
+}
 
 
 
