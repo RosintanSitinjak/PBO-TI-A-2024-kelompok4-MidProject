@@ -26,8 +26,13 @@ public class Main {
                 break;
 
             case 2:
-                System.out.println("proses");
+                clearScreen();
+                Peserta.lihatPeserta();
                 break;
+
+            case 3:
+                clearScreen();
+                System.out.println();
 
             default:
                 System.out.println("Pilih dari pilihan 1-x");
