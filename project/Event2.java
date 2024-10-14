@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Event2 {
-    static ArrayList<Event> events = new ArrayList<>();
+    static ArrayList<Event1> events = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
 
     public static void addEvent(){
@@ -18,7 +18,7 @@ public class Event2 {
         System.out.print("Tempat/Lokasi Event: ");
         String eventLocation = input.nextLine();
 
-        events.add(new Event(nameEvent, dateEvent, eventLocation));
+        events.add(new Event1(nameEvent, dateEvent, eventLocation));
         System.out.println("Event berhasil ditambahkan");
         System.out.print("Kembali ke menu awal? (y/n): ");
         String back = input.nextLine();
@@ -37,7 +37,7 @@ public class Event2 {
         }
 
         for (int i = 0; i < events.size(); i++){
-            Event event = events.get(i);
+            Event1 event = events.get(i);
 
             System.out.println((i + 1) + ". Nama Event: " + event.namaEvent);
             System.out.println("Tanggal Event: " + event.tanggalEvent);

@@ -1,12 +1,12 @@
 package project;
 
 
-public class Event {
+public class Event1 {
     String namaEvent;
     String tanggalEvent;
     String tempatEvent;
 
-    public Event(String namaEvent, String tanggalEvent, String tempatEvent) {
+    public Event1(String namaEvent, String tanggalEvent, String tempatEvent) {
         this.namaEvent = namaEvent;
         this.tanggalEvent = tanggalEvent;
         this.tempatEvent = tempatEvent;
