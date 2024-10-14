@@ -39,9 +39,9 @@ public class Event2 {
         for (int i = 0; i < events.size(); i++){
             Event1 event = events.get(i);
 
-            System.out.println((i + 1) + ". Nama Event: " + event.namaEvent);
-            System.out.println("Tanggal Event: " + event.tanggalEvent);
-            System.out.println("Tempat Event: " + event.tempatEvent);
+            System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
+            System.out.println("Tanggal Event: " + event.dateEvent);
+            System.out.println("Tempat Event: " + event.eventLocation);
             System.out.println(" ");
         }
 
