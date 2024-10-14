@@ -1,18 +1,20 @@
 package project;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner (System.in);
+        Scanner scanner = new Scanner (System.in);
+        ArrayList<Event> eventList = new ArrayList<>();
 
         pilihanMenu();
-        System.out.println("Masukkan pilihan Anda: ");
-        int choice = input.nextInt();
+        System.out.print("Masukkan pilihan Anda: ");
+        int choice = scanner.nextInt();
 
         switch(choice){
             case 1:
-                System.out.println("proses");
+                EventManager.menuEvent();
             break;
 
             case 2:
