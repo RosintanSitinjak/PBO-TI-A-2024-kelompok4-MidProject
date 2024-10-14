@@ -68,16 +68,22 @@ public class Event2 {
 
         switch (choose){
             case 1:
+                Main.clearScreen();
                 addEvent();
                 break;
             case 2:
+                Main.clearScreen();
                 break;
             case 3:
+                Main.clearScreen();
                 break;
             case 4:
+                Main.clearScreen();
                 showEvent();
                 break;
             case 0:
+                Main.clearScreen();
+                Main.utama();
                 break;
             default:
                 System.out.println("Pilihan menu tidak valid, silahkan masukkan pilihan menu kembali");
