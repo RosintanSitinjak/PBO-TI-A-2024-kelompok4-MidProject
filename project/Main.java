@@ -27,12 +27,9 @@ public class Main {
 
             case 2:
                 clearScreen();
-                Peserta.lihatPeserta();
+                Peserta.menuPesertaEvent(scanner);
                 break;
 
-            case 3:
-                clearScreen();
-                System.out.println();
 
             default:
                 System.out.println("Pilih dari pilihan 1-x");

@@ -1,5 +1,5 @@
-package project;
+//package project;
 
-public class LihatPeserta {
+//public class LihatPeserta {
 
-}
+//}

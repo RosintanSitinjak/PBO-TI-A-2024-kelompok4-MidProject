@@ -5,31 +5,64 @@ import java.util.Scanner;
 
 public class Peserta {
 
-    private static ArrayList<String> daftarEvent = new ArrayList<>();
     private static ArrayList<String> pesertaEvent = new ArrayList<>();
 
+    static class PesertaInfo {
+        private String nama;
+        private String NIM;
+        private String event;
 
-    private static void cariEvent(Scanner scanner) {
-        if (daftarEvent.isEmpty()) {
-            System.out.println("Belum ada event yang terdaftar.");
-            return;
+        public PesertaInfo(String nama, String NIM, String event) {
+            this.nama = nama;
+            this.NIM = NIM;
+            this.event = event;
+
         }
-
-        System.out.print("Masukkan nama event yang ingin dicari: ");
-        String namaEvent = scanner.nextLine();
-
-        boolean ditemukan = false;
-        for (String event : daftarEvent) {
-            if (event.toLowerCase().contains(namaEvent.toLowerCase())) {
-                System.out.println("Event ditemukan: " + event);
-                ditemukan = true;
-            }
-        }
-
-        if (!ditemukan) {
-            System.out.println("Event tidak ditemukan.");
+        @Override
+        public String toString() {
+            return "Nama: " + nama + ", NIM: " + NIM + ", Event: " + event;
         }
     }
+
+
+    public static void menuPesertaEvent(Scanner scanner) {
+        boolean running = true;
+        while (running) {
+            System.out.println("===== Peserta Event =====");
+            System.out.println("1. Daftar Peserta");
+            System.out.println("2. Tambah Peserta");
+            System.out.println("3. Hapus Peserta");
+            System.out.println("0. Kembali ke menu utama");
+            System.out.println("Masukkan pilihan anda: ");
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    System.out.println("Daftar Peserta Event");
+                    lihatPeserta(scanner);
+                    break;
+
+                case "2":
+                    System.out.println("Menambahkan peserta event");
+                    tambahPeserta(scanner);
+                    break;
+
+                case "3":
+                    System.out.println("Menghapus peserta event");
+                    hapusPeserta(scanner);
+                    break;
+
+                case "0":
+                    running = false;
+                    System.out.println("Kembali ke menu utama");
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        }
+    }
+
 
     public static void lihatPeserta() {
         if (pesertaEvent.isEmpty()) {
@@ -42,9 +75,16 @@ public class Peserta {
         }
     }
 
+
     public static void tambahPeserta(Scanner scanner) {
         System.out.print("Masukkan nama peserta yang ingin ditambahkan: ");
         String namaPeserta = scanner.nextLine();
+        System.out.println("Masukan NIM Peserta: ");
+        String nimPeserta = scanner.nextLine();
+        System.out.println("Masukkan event yang diikuti: ");
+        String eventPeserta = scanner.nextLine();
+
+        PesertaInfo peserta = new PesertaInfo(namaPeserta, nimPeserta, eventPeserta);
         pesertaEvent.add(namaPeserta);
         System.out.println("Peserta " + namaPeserta + " berhasil ditambahkan.");
     }
@@ -58,17 +98,12 @@ public class Peserta {
         lihatPeserta();
         System.out.print("Masukkan nomor peserta yang ingin dihapus: ");
         int nomorPeserta = scanner.nextInt();
-        scanner.nextLine(); // Clear buffer
+        scanner.nextLine();
         if (nomorPeserta > 0 && nomorPeserta <= pesertaEvent.size()) {
             String pesertaDihapus = pesertaEvent.remove(nomorPeserta - 1);
             System.out.println("Peserta " + pesertaDihapus + " berhasil dihapus.");
         } else {
             System.out.println("Nomor peserta tidak valid.");
         }
-    }
-
-    public static void tambahEvent(String namaEvent){
-        daftarEvent.add(namaEvent);
-        System.out.println("Event " + namaEvent + "sudah ditambah");
     }
 }
