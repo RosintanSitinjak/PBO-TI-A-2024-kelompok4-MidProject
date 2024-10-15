@@ -27,7 +27,7 @@ public class Main {
 
             case 2:
                 clearScreen();
-                Peserta.menuPesertaEvent(scanner);
+                Peserta.menuPeserta();
                 break;
 
 
