@@ -27,10 +27,11 @@ public class Main {
 
             case "2":
                 clearScreen();
-                Peserta.menuPeserta();
+                Peserta.PesertaInfo.menuPeserta();
                 break;
             case "3":
                 clearScreen();
+                Peserta.PesertaInfo.lihatTotalPeserta();
                 break;
             case "4":
                 clearScreen();
