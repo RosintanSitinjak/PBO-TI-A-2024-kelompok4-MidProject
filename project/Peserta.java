@@ -8,42 +8,7 @@ import static project.Event2.events;
 public class Peserta {
     static ArrayList<PesertaInfo> pesertaList = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
-
-    static class PesertaInfo {
-        String nama;
-        String nim;
-        int eventpilih;
-
-        public PesertaInfo(String nama, String nim, int eventpilih) {
-            this.nama = nama;
-            this.nim = nim;
-            this.eventpilih = eventpilih;
-        }
-
-        public static void lihatPeserta() {
-            if (pesertaList.isEmpty()) {
-                System.out.println("Tidak Ada Peserta yang Terdaftar!");
-                menuPeserta();
-            }
-
-            System.out.println("Daftar Peserta yang Sudah Terdaftar");
-            System.out.println("=====================================");
-            for (int i = 0; i < pesertaList.size(); i++) {
-                PesertaInfo peserta = pesertaList.get(i);
-
-                System.out.println((i + 1) + ". Nama: " + peserta.nama);
-                System.out.println("--------------------------------------");
-            }
-
-            System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
-            String back = input.nextLine();
-
-            if (back.equalsIgnoreCase("y")) {
-                menuPeserta();
-            }
-        }
-
-
+    
         public static void tambahPeserta() {
             System.out.println("Silahkan Masukkan Detail Peserta:");
             System.out.println("-------------------------------------");
@@ -64,17 +29,15 @@ public class Peserta {
 
                 System.out.println("_________________________________");
                 System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
-                System.out.println("   Tanggal Event: " + event.dateEvent);
-                System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
-                System.out.println("---------------------------------");
+                System.out.println("_________________________________");
             }
             System.out.print("Event yang Diikuti (nomor): ");
-            int eventpilih = input.nextInt() - 1;
+            int eventchoice = input.nextInt() - 1;
             input.nextLine();
 
-            if (eventpilih >= 0 && eventpilih < Event2.events.size()) {
-                Event1 event = events.get(eventpilih);
-                PesertaInfo peserta = new PesertaInfo(nama, nim, eventpilih);
+            if (eventchoice >= 0 && eventchoice < events.size()) {
+                Event1 event = events.get(eventchoice);
+                PesertaInfo peserta = new PesertaInfo(nama, nim, event);
                 pesertaList.add(peserta);
                 event.tambahPeserta(peserta);
                 System.out.println("Peserta berhasil ditambahkan!");
@@ -90,6 +53,28 @@ public class Peserta {
             }
         }
 
+    public static void lihatPeserta() {
+            PesertaInfo peserta = null;
+        if (pesertaList.isEmpty()) {
+            System.out.println("Tidak Ada Peserta yang Terdaftar!");
+            menuPeserta();
+        }
+
+        System.out.println("Daftar Peserta yang Sudah Terdaftar");
+        System.out.println("=====================================");
+        for (int i = 0; i < pesertaList.size(); i++) {
+            System.out.println("Nama: " + peserta.nama);
+            System.out.println("______________________");
+        }
+
+        System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
+        String back = input.nextLine();
+
+        if (back.equalsIgnoreCase("y")) {
+            menuPeserta();
+        }
+    }
+
 
         public static void hapusPeserta() {
             if (pesertaList.isEmpty()) {
@@ -103,7 +88,7 @@ public class Peserta {
                 PesertaInfo peserta = pesertaList.get(i);
                 System.out.println((i + 1) + ". Nama: " + peserta.nama);
                 System.out.println("   NIM: " + peserta.nim);
-                System.out.println("   Event: " + peserta.eventpilih);
+                System.out.println("   Event: " + peserta.eventpilih.getnameEvent());
             }
 
             System.out.println("--------------------------------------");
@@ -134,7 +119,32 @@ public class Peserta {
                 menuPeserta();
             }
             for (Event1 event : events) {
-                System.out.println("Nama Event: " + event.getnameEvent() + "\nTotal Peserta: " + event.getPesertaList().size());
+                System.out.println("Nama Event: " + event.getnameEvent() + ",Total Peserta: " + event.getPesertaList().size());
+            }
+
+            System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
+            String back = input.nextLine();
+            if (back.equalsIgnoreCase("y")) {
+                menuPeserta();
+            } else {
+                return;
+            }
+        }
+
+        public static void lihatDetailPeserta(){
+            System.out.println("Masukkan nama peserta: ");
+            String nama = input.nextLine();
+
+            boolean found = false;
+            for(PesertaInfo peserta : pesertaList){
+                if (peserta.getnamaPeserta().equalsIgnoreCase(nama)){
+                    peserta.tampilDetailPeserta();
+                    found = true;
+                }
+            }
+
+            if (!found){
+                System.out.println("Peserta tidak terdaftar");
             }
         }
 
@@ -171,5 +181,4 @@ public class Peserta {
                     System.out.println("Pilihan Menu Tidak Valid");
             }
         }
-    }
 }

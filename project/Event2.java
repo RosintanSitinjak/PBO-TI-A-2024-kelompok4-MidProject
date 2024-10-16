@@ -20,13 +20,15 @@ public class Event2 {
         String eventLocation = input.nextLine();
 
         System.out.println("-------------------------------------");
-        events.add(new Event1(nameEvent, dateEvent, eventLocation));
+        Event1 newEvent = new Event1(nameEvent, dateEvent, eventLocation);
+        events.add(newEvent);
         System.out.println("Event Telah Berhasil Ditambahkan!");
         System.out.println("-------------------------------------");
 
         System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
+            Main.clearScreen();
             menuEvent();
         }
     }
@@ -44,6 +46,7 @@ public class Event2 {
             System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
             System.out.println("   Tanggal Event: " + event.dateEvent);
             System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
+            System.out.println("___________________________________");
         }
 
         System.out.println("=======================================");
@@ -63,6 +66,7 @@ public class Event2 {
         System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
+            Main.clearScreen();
             menuEvent();
         }
     }
@@ -113,6 +117,7 @@ public class Event2 {
         System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
+            Main.clearScreen();
             menuEvent();
         }
     }
@@ -123,14 +128,21 @@ public class Event2 {
             return;
         }
 
+        System.out.println("Daftar Event yang Sudah Terdaftar");
+        System.out.println("_________________________________");
         for (int i = 0; i < events.size(); i++) {
             Event1 event = events.get(i);
-            System.out.println("Daftar Event yang Sudah Terdaftar");
-            System.out.println("_________________________________");
             System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
             System.out.println("   Tanggal Event: " + event.dateEvent);
             System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
             System.out.println("-----------------------------------");
+        }
+
+        System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
+        String back = input.nextLine();
+        if (back.equalsIgnoreCase("y")) {
+            Main.clearScreen();
+            menuEvent();
         }
     }
 

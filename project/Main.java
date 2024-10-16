@@ -7,11 +7,9 @@ import org.w3c.dom.events.Event;
 
 public class Main {
     static Scanner scanner = new Scanner (System.in);
-    ArrayList<Event1> eventList = new ArrayList<>();
 
     public static void main(String[] args) {
         utama();
-
     }
 
     public static void utama(){
@@ -27,20 +25,31 @@ public class Main {
 
             case "2":
                 clearScreen();
-                Peserta.PesertaInfo.menuPeserta();
+                Peserta.menuPeserta();
                 break;
             case "3":
                 clearScreen();
-                Peserta.PesertaInfo.lihatTotalPeserta();
+                Peserta.lihatTotalPeserta();
+                returnMenu();
                 break;
             case "4":
                 clearScreen();
+                Peserta.lihatDetailPeserta();
+                returnMenu();
                 break;
             case "x":
                 System.out.println();
                 break;
             default:
                 System.out.println("Pilih dari pilihan 1-x");
+        }
+    }
+    //kembali ke menu
+    private static void returnMenu() {
+        System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
+        String back = scanner.nextLine();
+        if (back.equalsIgnoreCase("y")) {
+            utama();
         }
     }
 
