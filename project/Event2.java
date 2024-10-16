@@ -1,7 +1,6 @@
 package project;
 
 import java.util.ArrayList;
-
 import java.util.Scanner;
 
 public class Event2 {
@@ -29,12 +28,9 @@ public class Event2 {
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
             menuEvent();
-//        } else {
-//            return;
         }
     }
 
-    //Method untuk menghapus eventnya
     public static void removeEvent() {
         if (events.isEmpty()) {
             System.out.println("Tidak Ada Event yang Terdaftar!");
@@ -45,7 +41,6 @@ public class Event2 {
         System.out.println("===================================");
         for (int i = 0; i < events.size(); i++) {
             Event1 event = events.get(i);
-
             System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
             System.out.println("   Tanggal Event: " + event.dateEvent);
             System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
@@ -53,8 +48,8 @@ public class Event2 {
 
         System.out.println("=======================================");
         System.out.print("Masukkan Nomor Event yang Ingin Dihapus: ");
-            int delete = input.nextInt();
-            input.nextLine();
+        int delete = input.nextInt();
+        input.nextLine();
 
         if (delete <= 0 || delete > events.size()) {
             System.out.println("Nomor Event yang Anda Masukkan Tidak Valid");
@@ -65,17 +60,13 @@ public class Event2 {
         System.out.println("================================");
         System.out.println("Event Telah Berhasil Dihapus!");
 
-        System.out.println("================================");
         System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
             menuEvent();
-//        } else {
-//            return;
         }
     }
 
-    //method untuk mengedit event
     public static void updateEvent() {
         if (events.isEmpty()) {
             System.out.println("Tidak Ada Event yang Terdaftar!");
@@ -85,17 +76,17 @@ public class Event2 {
         System.out.println("Daftar Event yang Sudah Terdaftar: ");
         System.out.println("-------------------------------------");
 
-            for (int i = 0; i < events.size(); i++) {
-                Event1 event = events.get(i);
-                System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
-                System.out.println("   Tanggal Event: " + event.dateEvent);
-                System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
+        for (int i = 0; i < events.size(); i++) {
+            Event1 event = events.get(i);
+            System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
+            System.out.println("   Tanggal Event: " + event.dateEvent);
+            System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
         }
 
         System.out.println("----------------------------------------");
         System.out.print("Masukkan Nomor Event yang Ingin Diedit: ");
-            int update = input.nextInt();
-            input.nextLine();
+        int update = input.nextInt();
+        input.nextLine();
 
         if (update <= 0 || update > events.size()) {
             System.out.println("Nomor Event Tidak Valid");
@@ -104,7 +95,6 @@ public class Event2 {
 
         Event1 event = events.get(update - 1);
 
-        //updateannya
         System.out.println("----------------------------------------");
         System.out.println("Silahkan Edit Detail Event: \n");
 
@@ -119,19 +109,14 @@ public class Event2 {
 
         System.out.println("-----------------------------");
         System.out.println("Event Telah Berhasil Diupdate!");
-        System.out.println("-----------------------------");
 
         System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
         String back = input.nextLine();
         if (back.equalsIgnoreCase("y")) {
             menuEvent();
-//        } else {
-//            return;
         }
     }
 
-
-    //method untuk menampilkan semua event
     public static void showEvent() {
         if (events.isEmpty()) {
             System.out.println("Tidak Ada Event yang Terdaftar!");
@@ -140,26 +125,43 @@ public class Event2 {
 
         for (int i = 0; i < events.size(); i++) {
             Event1 event = events.get(i);
-
             System.out.println("Daftar Event yang Sudah Terdaftar");
             System.out.println("_________________________________");
             System.out.println((i + 1) + ". Nama Event: " + event.nameEvent);
             System.out.println("   Tanggal Event: " + event.dateEvent);
             System.out.println("   Tempat/Lokasi Event: " + event.eventLocation);
-//            System.out.println(" ");
-
             System.out.println("-----------------------------------");
-            System.out.print("Ingin Kembali ke Menu Awal? (y/n): ");
-            String back = input.nextLine();
-
-            if (back.equalsIgnoreCase("y")) {
-                menuEvent();
-//        } else {
-//            return;
-            }
         }
     }
 
+    // Method untuk mencari event berdasarkan nama
+    public static void searchEvent() {
+        if (events.isEmpty()) {
+            System.out.println("Tidak Ada Event yang Terdaftar!");
+            return;
+        }
+
+        System.out.print("Masukkan Kata Kunci untuk Mencari Event: ");
+        String keyword = input.nextLine().toLowerCase();
+
+        boolean found = false;
+        System.out.println("Hasil Pencarian:");
+        System.out.println("----------------------------");
+
+        for (Event1 event : events) {
+            if (event.nameEvent.toLowerCase().contains(keyword)) {
+                System.out.println("Nama Event: " + event.nameEvent);
+                System.out.println("Tanggal: " + event.dateEvent);
+                System.out.println("Lokasi: " + event.eventLocation);
+                System.out.println("----------------------------");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Event Tidak Ditemukan!");
+        }
+    }
 
     public static void menuEvent() {
         System.out.println("====== Menu Event ======");
@@ -167,6 +169,7 @@ public class Event2 {
         System.out.println("2. Hapus Event");
         System.out.println("3. Edit Event");
         System.out.println("4. Lihat Semua Event");
+        System.out.println("5. Cari Event Berdasarkan Nama");
         System.out.println("0. Kembali ke Menu Utama");
         System.out.println("========================");
         System.out.print("Masukkan Pilihan Menu: ");
@@ -190,13 +193,16 @@ public class Event2 {
                 Main.clearScreen();
                 showEvent();
                 break;
+            case 5:
+                Main.clearScreen();
+                searchEvent();
+                break;
             case 0:
                 Main.clearScreen();
                 Main.utama();
                 break;
             default:
                 System.out.println("Pilihan Menu Tidak Valid, Silahkan Masukkan Pilihan Menu Kembali");
-
         }
     }
 }
