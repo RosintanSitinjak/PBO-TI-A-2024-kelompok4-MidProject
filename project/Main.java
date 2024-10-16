@@ -17,20 +17,27 @@ public class Main {
     public static void utama(){
         pilihanMenu();
         System.out.print("Masukkan pilihan Anda: ");
-        int choice = scanner.nextInt();
+        String choice = scanner.nextLine();
 
         switch(choice){
-            case 1:
+            case "1":
                 clearScreen();
                 Event2.menuEvent();
                 break;
 
-            case 2:
+            case "2":
                 clearScreen();
                 Peserta.menuPeserta();
                 break;
-
-
+            case "3":
+                clearScreen();
+                break;
+            case "4":
+                clearScreen();
+                break;
+            case "x":
+                System.out.println();
+                break;
             default:
                 System.out.println("Pilih dari pilihan 1-x");
         }
