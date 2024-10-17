@@ -38,7 +38,8 @@ public class Main {
                 returnMenu();
                 break;
             case "x":
-                System.out.println();
+                System.out.println("Terima kasih!");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Pilih dari pilihan 1-x");

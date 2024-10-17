@@ -78,11 +78,6 @@ public class Peserta {
 
 
         public static void hapusPeserta() {
-            if (pesertaList.isEmpty()) {
-                System.out.println("Tidak Ada Peserta yang Terdaftar!");
-                return;
-            }
-
             System.out.println("Daftar Peserta yang Sudah Terdaftar:");
             System.out.println("--------------------------------------");
             for (int i = 0; i < pesertaList.size(); i++) {
@@ -93,17 +88,25 @@ public class Peserta {
             }
 
             System.out.println("--------------------------------------");
-            System.out.print("Masukkan Nomor Peserta yang Ingin Dihapus: ");
-            int delete = input.nextInt();
-            input.nextLine();
+            System.out.print("Masukkan nama Peserta yang Ingin Dihapus: ");
+            String nama = input.nextLine();
 
-            if (delete <= 0 || delete > pesertaList.size()) {
-                System.out.println("Nomor Peserta yang Anda Masukkan Tidak Valid");
-                return;
+            PesertaInfo pesertaRemove = null;
+            for(PesertaInfo peserta : pesertaList){
+                if (peserta.getnamaPeserta().equalsIgnoreCase(String.valueOf(nama))){
+                    pesertaRemove = peserta;
+                    break;
+                }
             }
 
-            pesertaList.remove(delete - 1);
-            System.out.println("Peserta Telah Berhasil Dihapus!");
+            if (pesertaRemove != null){
+                pesertaList.remove(pesertaRemove);
+                pesertaRemove.getEvent().hapusPeserta(pesertaRemove);
+                System.out.println("Peserta Telah Berhasil Dihapus!");
+            } else {
+                System.out.println("Peserta tidak ditemukan");
+            }
+
 
             System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
             String back = input.nextLine();
