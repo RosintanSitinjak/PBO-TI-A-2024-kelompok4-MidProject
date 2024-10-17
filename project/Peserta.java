@@ -49,6 +49,7 @@ public class Peserta {
             System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
             String back = input.nextLine();
             if (back.equalsIgnoreCase("y")) {
+                Main.clearScreen();
                 menuPeserta();
             }
         }
@@ -71,6 +72,7 @@ public class Peserta {
         String back = input.nextLine();
 
         if (back.equalsIgnoreCase("y")) {
+            Main.clearScreen();
             menuPeserta();
         }
     }
@@ -107,6 +109,7 @@ public class Peserta {
             System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
             String back = input.nextLine();
             if (back.equalsIgnoreCase("y")) {
+                Main.clearScreen();
                 menuPeserta();
             } else {
                 return;
@@ -122,10 +125,11 @@ public class Peserta {
                 System.out.println("Nama Event: " + event.getnameEvent() + ",Total Peserta: " + event.getPesertaList().size());
             }
 
-            System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
+            System.out.print("Ingin Kembali ke Menu Utama? (y/n): ");
             String back = input.nextLine();
             if (back.equalsIgnoreCase("y")) {
-                menuPeserta();
+                Main.clearScreen();
+                Main.utama();
             } else {
                 return;
             }
@@ -141,6 +145,14 @@ public class Peserta {
                     peserta.tampilDetailPeserta();
                     found = true;
                 }
+            }
+            System.out.print("Ingin Kembali ke Menu Utama? (y/n): ");
+            String back = input.nextLine();
+            if (back.equalsIgnoreCase("y")) {
+                Main.clearScreen();
+                Main.utama();
+            } else {
+                return;
             }
 
             if (!found){
