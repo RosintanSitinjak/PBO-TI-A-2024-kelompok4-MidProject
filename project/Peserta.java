@@ -55,17 +55,16 @@ public class Peserta {
         }
 
     public static void lihatPeserta() {
-            PesertaInfo peserta = null;
         if (pesertaList.isEmpty()) {
             System.out.println("Tidak Ada Peserta yang Terdaftar!");
             menuPeserta();
         }
 
-        System.out.println("Daftar Peserta yang Sudah Terdaftar");
-        System.out.println("=====================================");
+        System.out.println("Daftar Peserta yang Sudah Terdaftar:");
+        System.out.println("--------------------------------------");
         for (int i = 0; i < pesertaList.size(); i++) {
-            System.out.println("Nama: " + peserta.nama);
-            System.out.println("______________________");
+            PesertaInfo peserta = pesertaList.get(i);
+            System.out.println((i + 1) + ". Nama: " + peserta.nama);
         }
 
         System.out.print("Ingin Kembali ke Menu Peserta? (y/n): ");
